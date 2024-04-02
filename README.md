@@ -11,7 +11,7 @@ Source: https://www.eia.gov/electricity/data/browser/#/topic/2?agg=2,0,1&fuel=f&
 
 For this analysis I collected data from the United States Energy Information Administration and within the dataset there are the monthly consumption totals of coal, petroleum liquids, petroleum coke and natural gas for all sectors. This dataset has every month’s usage since January 1, 2001, and ends on December 1, 2023.
 
-
+![fire](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/fire.JPG)
 
 
 ## Data Preparation
