@@ -156,7 +156,7 @@ Perform this analysis on a much larger dataset and one that isn't averaged every
 
 
 ## For More Information
-See the full analysis in the [Jupyter Notebook](https://github.com/lpb3393/natural_gas_consumption/blob/main/natural_gas_consumption.ipynb) or review the [presentation](https://github.com/lpb3393/predicting_pneumonia/blob/main/predicting-pneumonia-presentation.pdf)
+See the full analysis in the [Jupyter Notebook](https://github.com/lpb3393/natural_gas_consumption/blob/main/natural_gas_consumption.ipynb) or review the [presentation](https://github.com/lpb3393/natural_gas_consumption/blob/main/natural_gas_consumption_presentation.pdf)
 
 
 
@@ -166,6 +166,10 @@ See the full analysis in the [Jupyter Notebook](https://github.com/lpb3393/natur
 ├── photos
 ├── .gitignore
 ├── README.md
-├── predicting-pneumonia-presentation.pdf
-└── predicting_pneumonia.ipynb
+├── natural_gas_consumption_presentation.pdf
+└── natural_gas_consumption.ipynb
 ```
+
+## For Reproducing Analysis
+You can recreate the analysis in the [Google Colaboratory](https://colab.research.google.com/drive/15LbgfiI9YhifuU_VM9oXnEMq37Nl_MVL#scrollTo=GlTeqzx5zeHy). 
+The data is pre-loaded in the file but can also be downloaded directly from the [EIA Website](https://www.eia.gov/electricity/data/browser/#/topic/2?agg=2,0,1&fuel=f&geo=g&sec=g&linechart=~ELEC.CONS_TOT.NG-US-99.M&columnchart=ELEC.CONS_TOT.COW-US-99.M&map=ELEC.CONS_TOT.COW-US-99.M&freq=M&start=200101&end=202312&ctype=linechart&ltype=pin&rtype=s&maptype=0&rse=0&pin=). To download the dataset, click the link provided and selete "Download" on the page. You can then select the format needed. 
