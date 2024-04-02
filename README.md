@@ -152,3 +152,20 @@ To improve my model in the future, these steps can be taken to give a more compl
 Include renewable engergy sources in the analysis to see how they compare to natural gas and how they might affect each other.
 Go more indepth to the seasonal variations in the data and how that has affected the performance of this model.
 Perform this analysis on a much larger dataset and one that isn't averaged every month.
+
+
+
+## For More Information
+See the full analysis in the [Jupyter Notebook](https://github.com/lpb3393/natural_gas_consumption/blob/main/natural_gas_consumption.ipynb) or review the [presentation](https://github.com/lpb3393/predicting_pneumonia/blob/main/predicting-pneumonia-presentation.pdf)
+
+
+
+
+```
+├── data
+├── photos
+├── .gitignore
+├── README.md
+├── predicting-pneumonia-presentation.pdf
+└── predicting_pneumonia.ipynb
+```
