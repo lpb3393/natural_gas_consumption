@@ -19,7 +19,7 @@ For this analysis I collected data from the United States Energy Information Adm
 
 This dataset is in the form of a csv and currently the datatypes are all strings. First I will need to drop rows and columns that do not contain any data, then I will change the index to date and transpose the dataset so that each date will have it's corresponding natural gas comsumption amount. Finally, since for this analysis I am only focusing on Natural Gas, I will drop all columns other than "Natural Gas" and get the descriptive statistics on the new dataset.
 
-![doctor](https://github.com/lpb3393/predicting_pneumonia/blob/main/photos/doctor.JPG)
+![originaldataset](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/originaldataset.JPG)
 
 
 # Exploratory Data Analysis
@@ -27,9 +27,9 @@ This dataset is in the form of a csv and currently the datatypes are all strings
 For this section, I wanted to show what the dataset looked like all together on a line graph, so that we can clearly see the trend. It was also important to split the dataset in two, train and valid, so that we can train the dataset on one group and then test the model on unseen data. The training set has 80% of the data and the test set has 20% of the data.
 
 
-![doctor](https://github.com/lpb3393/predicting_pneumonia/blob/main/photos/doctor.JPG)
+![originalplot](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/originalplot.JPG)
 
-![doctor](https://github.com/lpb3393/predicting_pneumonia/blob/main/photos/doctor.JPG)
+![traintestsplit](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/traintestsplit.JPG)
 
 
 # Modeling
@@ -40,16 +40,19 @@ I created several models for this analysis, starting with a simple naive baselin
 
 First I built the baseline naive model, where the datset is shifted by 1 and is now equal to the day before. The RMSE value for this model will be what I try to improve upon and compare against when I create the other models to follow.
 
-![doctor](https://github.com/lpb3393/predicting_pneumonia/blob/main/photos/doctor.JPG)
+![shiftedmodel](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/shiftedmodel.JPG)
+
+
 
 The RMSE value for the baseline is one of the values I will be comparing the models by. RMSE equals the difference between the predicted value and the true value in the original dataset. This basically shows us how close our model is to predicting the correct value, so the smaller the value, the better but it is relative to the values in the dataset.
 
-![doctor](https://github.com/lpb3393/predicting_pneumonia/blob/main/photos/doctor.JPG)
+![residuals](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/residuals.JPG)
+
+![decomp](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/decomp.JPG)
 
 We can see from this decomposition chart that there is an upward trend, which indicates a general overall growth in the production of natural gas. We can also see a seasonality, with lags of 1 year, with high peaks during the summer months. We can't really see a pattern in the residulas, which is what we want.
 
 
-![doctor](https://github.com/lpb3393/predicting_pneumonia/blob/main/photos/doctor.JPG)
 
 ## Autoregressive Model (AR)
 
@@ -61,26 +64,35 @@ Moving Average (MA): This part models the variable by using the past forecast er
 
 I will first start with two AR models, then move on to two MA models. Finally, I will use ACF and PACF charts to determine the best parameters for the ARMA model.
 
-![doctor](https://github.com/lpb3393/predicting_pneumonia/blob/main/photos/doctor.JPG)
+![differenced](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/differenced.JPG)
 
+![ar1](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/ar1.JPG)
 
-![doctor](https://github.com/lpb3393/predicting_pneumonia/blob/main/photos/doctor.JPG)
+![ar2](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/ar2.JPG)
+
 
 ## Moving Average Model (MA)
 
-![doctor](https://github.com/lpb3393/predicting_pneumonia/blob/main/photos/doctor.JPG)
+![ma1](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/ma1.JPG)
+
+![ma2](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/ma2.JPG)
 
 
 ## ARMA Model
 
 Since both the AR 2 and the MA 2 model performed better than the first, I will start the ARMA model with 2 in each p and q parameters. Then, I will use ACF and PACF to get the optimal parameters for the model.
 
-![doctor](https://github.com/lpb3393/predicting_pneumonia/blob/main/photos/doctor.JPG)
+![darma1](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/arma1.JPG)
 
+![ACF](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/ACF.JPG)
 
-![doctor](https://github.com/lpb3393/predicting_pneumonia/blob/main/photos/doctor.JPG)
+![PACF](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/PACF.JPG)
 
-![doctor](https://github.com/lpb3393/predicting_pneumonia/blob/main/photos/doctor.JPG)
+![arma2](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/arma2.JPG)
+
+![arma2_residuals](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/arma2_residuals.JPG)
+
+![arma2forecast](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/arma2forecast.JPG)
 
 
 ## SARIMAX Model
@@ -97,13 +109,13 @@ Exogenous Regressors (X): Allows the model to include external variables that co
 
 SARIMAX models are particularly useful for forecasting when data show patterns that repeat over time and when such patterns are influenced by external factors
 
-![doctor](https://github.com/lpb3393/predicting_pneumonia/blob/main/photos/doctor.JPG)
+![sarimax](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/sarimax.JPG)
 
+![sarimaxpred](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/sarimaxpred.JPG)
 
-![doctor](https://github.com/lpb3393/predicting_pneumonia/blob/main/photos/doctor.JPG)
+![sarimaxzoom](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/sarimaxzoom.JPG)
 
-
-![doctor](https://github.com/lpb3393/predicting_pneumonia/blob/main/photos/doctor.JPG)
+![sarimaxforecast](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/sarimaxforecast.JPG)
 
 
 
