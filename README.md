@@ -4,7 +4,7 @@ The forecasting of future natural gas consumption patterns is essential for ener
 
 Source: https://www.eia.gov/electricity/data/browser/#/topic/2?agg=2,0,1&fuel=f&geo=g&sec=g&linechart=~ELEC.CONS_TOT.NG-US-99.M&columnchart=ELEC.CONS_TOT.COW-US-99.M&map=ELEC.CONS_TOT.COW-US-99.M&freq=M&start=200101&end=202312&ctype=linechart&ltype=pin&rtype=s&maptype=0&rse=0&pin=
 
-![doctor](https://github.com/lpb3393/predicting_pneumonia/blob/main/photos/doctor.JPG)
+![coverphoto](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/coverphoto.jpg)
 
 
 # Data Understanding
@@ -12,7 +12,6 @@ Source: https://www.eia.gov/electricity/data/browser/#/topic/2?agg=2,0,1&fuel=f&
 For this analysis I collected data from the United States Energy Information Administration and within the dataset there are the monthly consumption totals of coal, petroleum liquids, petroleum coke and natural gas for all sectors. This dataset has every month’s usage since January 1, 2001, and ends on December 1, 2023.
 
 
-![doctor](https://github.com/lpb3393/predicting_pneumonia/blob/main/photos/doctor.JPG)
 
 
 ## Data Preparation
