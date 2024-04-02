@@ -47,7 +47,7 @@ The RMSE value for the baseline is one of the values I will be comparing the mod
 
 ![residuals](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/residuals.JPG)
 
-![decomp](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/decomp.JPG)
+![decomp](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/decmp.JPG)
 
 We can see from this decomposition chart that there is an upward trend, which indicates a general overall growth in the production of natural gas. We can also see a seasonality, with lags of 1 year, with high peaks during the summer months. We can't really see a pattern in the residulas, which is what we want.
 
