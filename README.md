@@ -33,7 +33,7 @@ First I built the baseline naive model, where the datset is shifted by 1 and is 
 The RMSE value for the baseline is one of the values I will be comparing the models by. RMSE equals the difference between the predicted value and the true value in the original dataset. This basically shows us how close our model is to predicting the correct value, so the smaller the value, the better but it is relative to the values in the dataset.
 
 
-We can see from this decomposition chart that there is an upward trend, which indicates a general overall growth in the production of natural gas. We can also see a seasonality, with lags of 1 year, with high peaks in the middle of the year. We can't really see a pattern in the residulas, which is what we want.
+We can see from this decomposition chart that there is an upward trend, which indicates a general overall growth in the production of natural gas. We can also see a seasonality, with lags of 1 year, with high peaks during the summer months. We can't really see a pattern in the residulas, which is what we want.
 
 ## Autoregressive Model (AR)
 
@@ -86,5 +86,21 @@ Another limitation is the ARMA model’s sensitivity to the choice of parameters
 ## Recommendations
 
 
+In light of modeling that shows increased demand for natural gas, here are three recommendations for gas and utility companies:
+
+Invest in Infrastructure: To meet the rising demand, companies should consider investing in the expansion and modernization of their distribution and transmission infrastructure. This includes developing new pipelines, storage facilities, and more terminals to ensure reliable delivery and storage of natural gas.
+
+Diversify Supply Sources: Companies should diversify their natural gas sources to mitigate risks associated with over-reliance on a single supplier or region. This could involve securing contracts with multiple suppliers, exploring alternative sources and investing in renewable energy to complement natural gas usage.
+
+Enhance Energy Efficiency Programs: Implementing and promoting energy efficiency programs can help manage demand and reduce the overall consumption of natural gas. Gas utilities can offer incentives for customers to adopt energy-efficient appliances, improve home insulation, and implement smart energy management systems to optimize natural gas use.
+
+
+
 
 ## Next Steps
+
+To improve my model in the future, these steps can be taken to give a more complete and well rounded approach to solving this problem:
+
+Include renewable engergy sources in the analysis to see how they compare to natural gas and how they might affect each other.
+Go more indepth to the seasonal variations in the data and how that has affected the performance of this model.
+Perform this analysis on a much larger dataset and one that isn't averaged every month.
