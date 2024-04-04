@@ -43,7 +43,7 @@ First I built the baseline naive model, where the datset is shifted by 1 and is 
 
 
 
-The RMSE value for the baseline is one of the values I will be comparing the models by. RMSE equals the difference between the predicted value and the true value in the original dataset. This basically shows us how close our model is to predicting the correct value, so the smaller the value, the better but it is relative to the values in the dataset.
+The RMSE value for the baseline is one of the values I will be comparing the models by. RMSE equals the difference between the predicted value and the true value in the original dataset. This basically shows us how close our model is to predicting the correct value, so the smaller the value, the better but it is relative to the values in the dataset. The RMSE value is quite high, so with creating models with more complexity I think that number will be lowered significantly.
 
 ![residuals](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/residuals.JPG)
 
@@ -67,14 +67,22 @@ I will first start with two AR models, then move on to two MA models. Finally, I
 
 ![ar1](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/ar1.JPG)
 
+This was a litte more complex of a baseline model. I wanted to use 1 in the parameters just to see what the AIC and RMSE values would be and how they could improve with tuning of the model later one. This did not perform terribly but I think it can be improved.
+
 ![ar2](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/ar2.JPG)
+
+Replacing the 1 with a 2 did not improve the model's performance by much at all but it is moving in the right direction. Next I will move on to the Moving Average Model and see how the model performs by changing the 'q' parameter.
 
 
 ## Moving Average Model (MA)
 
 ![ma1](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/ma1.JPG)
 
+The improvement by changing the q parameter decreased the aic and rmse score by a much larger margin than just changing the 'p' parameter from 1 to 2. Again, we are moving in the righ direction but I think the scores can still be improved.
+
 ![ma2](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/ma2.JPG)
+
+Since I changed the 'p' parameter from 1 to 2 in the AR model, I wanted to do the same thing for the MA model. Again, we are seeing an improvement in the model performance but a RMSE value of 102586 is not a score that would be sufficient in accurately forecasting natural gas consumption. Putting together the AR and the MA model for a ARMA model should increase th performance and then I will continue to hypertune the parameters.
 
 
 ## ARMA Model
@@ -83,11 +91,19 @@ Since both the AR 2 and the MA 2 model performed better than the first, I will s
 
 ![darma1](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/arma1.JPG)
 
+This is the largest improvement we've seen so far! The AIC score lowered by about 40 but the RMSE score lowered by about 14,000. Instead of hoping the parameters I set improve the model, next I will create ACF and PACF charts to get the exact parameters needed for optimal model performance.
+
 ![ACF](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/ACF.JPG)
+
+According to the ACF chart, the best value for 'p' is is 13.
 
 ![PACF](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/PACF.JPG)
 
+The PACF shows that both 9 and 12 would be best for the 'q' position in the ARMA model.
+
 ![arma2](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/arma2.JPG)
+
+Not surprisingly, this is the best performing model we've seen so far. Adding 13 and 9 in the p and q slots significantly improved the models performance. The AIC score dropped by about 600 and the RMSE decreased by over 30,000! By taking the range value and RMSE score, I calculated the Root Mean Squared Percentage Error, which is approximately 8%.
 
 ![arma2_residuals](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/arma2_residuals.JPG)
 
@@ -110,19 +126,23 @@ SARIMAX models are particularly useful for forecasting when data show patterns t
 
 ![sarimax](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/sarimax.JPG)
 
+After doing a grid search to find the best parameters for lowest AIC score, I was surprised to see such a high RMSE score. Initially I was using AIC as the main metric for model performance but after seeing this RMSE score, I feel that it is more important for our business problem to have a more accurate model than the best fitting model. So I will use this model on the validation dataset but will probably choose the ARMA_2 model as the best performing model.
+
 ![sarimaxpred](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/sarimaxpred.JPG)
 
 ![sarimaxzoom](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/sarimaxzoom.JPG)
 
 ![sarimaxforecast](https://github.com/lpb3393/natural_gas_consumption/blob/main/photos/sarimaxforecast.JPG)
 
+The model performed better on the entire dataset but since the AIC score and the RMSE score are still significantly higher than those of the ARMA 2 model, that is still the best performing model for this analysis.
+
 
 
 # Evaluation
 
-The evaluation of these models for natural gas consumption indicates that the ARMA model outperforms the SARIMAX model. This conclusion is drawn from the comparison of the Akaike Information Criterion (AIC) and the Root Mean Square Error (RMSE) scores for both models. The ARMA model exhibits an AIC score of 6829.150, which, despite being higher than the SARIMAX’s AIC score of 376.28, suggests a better fit to the data when considering the context of the scores. Additionally, the ARMA model’s RMSPE score of 4.74% is significantly lower than the SARIMAX’s RMSPE of 9.13%, indicating a more accurate prediction of natural gas consumption with less deviation from the observed values. These metrics collectively suggest that the ARMA model, with its lower complexity and better predictive accuracy, is more suitable for forecasting natural gas consumption in this scenario.
+The evaluation of these models for natural gas consumption indicates that the ARMA model outperforms the SARIMAX model. This conclusion is drawn from the comparison of the Akaike Information Criterion (AIC) and the Root Mean Square Error (RMSE) scores for both models. The ARMA model exhibits an AIC score of 6829.150, which, despite being higher than the SARIMAX’s AIC score of 376.28, suggests a better fit to the data when considering the context of the scores. Additionally, the ARMA model’s RMSPE score of 4.74% (RMSE of 56295) is significantly lower than the SARIMAX’s RMSPE of 9.13% (RMSE of 108275.2), indicating a more accurate prediction of natural gas consumption with less deviation from the observed values. These metrics collectively suggest that the ARMA model, with its lower complexity and better predictive accuracy, is more suitable for forecasting natural gas consumption in this scenario.
 
-The ARMA model’s better performance is also reflected in its ability to capture the dynamics of natural gas consumption without the need for the additional seasonal components that SARIMAX incorporates. While the SARIMAX model’s lower AIC score might suggest a better fit, the significantly higher RMSE points to less accurate predictions, which is critical for practical applications. In predictive modeling, especially for time series data, the goal is to achieve a balance between model complexity and predictive power.
+The ARMA model’s better performance is also reflected in its ability to capture the dynamics of natural gas consumption without the need for the additional seasonal components that SARIMAX incorporates. While the SARIMAX model’s lower AIC score might suggest a better fit, the significantly higher RMSE points to less accurate predictions, which is critical for practical applications. When I started this analysis, I was using AIC as the main deciding factor for model performance. When I got the SARIMAX models, I decided that because of our business problem having a lower RMSE score was more important. A low AIC score, while is important, isn't the best indicator for model performance accuracy. In predictive modeling, especially for time series data, the goal is to achieve a balance between model complexity and predictive power.
 
 
 ## Limitations
